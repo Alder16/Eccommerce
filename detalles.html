@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- /*boostrap*/ -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style/index.css">
+    <title>E-commerce Products</title>
+  </head>
+  <body>
+  
+    <!-- /* -------------  Productos  ---------------- */ -->
+        
+
+<div class="col">
+    
+    <div class="card w-50" style="shadow p-3 mb-5 bg-body rounded" id="carritodiv">    
+        <img href="img" id="img"/>
+            <div class="card-body">
+                <p class="card-text" id="_id"></p>
+                <h5 class="card-title" id="nombre"></h5>
+                <p class="card-text" id="descripcion"></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="categoria"></li>
+                <li class="list-group-item" id="precio"></li>
+              </ul>
+              <div class="card-body">
+                              
+          </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col">
+            <button class="btn btn-danger" id="btn_comprar">Comprar</button>
+            <input type="number" placeholder="Ingrese la cantidad" id="cantidad">
+        </div>    
+    </div>
+</div>    
+
+    <!-- /* -------------  Scripts  ---------------- */ -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let nombre = "";
+        let precio = 0;
+        $.ajax({
+          url: window.location.href,
+          method: "POST",
+          success: function (r) {
+            
+            $("#img").attr("src", r.img);
+            $("#_id").append(r._id)
+            $("#nombre").append(r.nombre);
+            $("#descripcion").append(r.descripcion);
+            $("#categoria").append(r.categoria);
+            $("#precio").append(r.precio);
+            nombre=r.nombre;
+            precio=r.precio;
+          },
+        });
+
+        $("#btn_comprar").click(function (evento) {
+        evento.preventDefault();
+        let datoProducts = $("#cantidad").val();
+    
+        $.ajax({
+          method: "POST",
+          url: "/incluirCarrito",
+          data: {
+            nombre:nombre,
+            precio:precio,
+            cantidad:datoProducts
+          },
+          success: function (r) {
+            console.log(r)
+            alert("Producto agregado al carrito");
+            window.location.href = "/inicio";
+          },
+        });
+      });
+      });
+    </script>
+  </body>
+</html>

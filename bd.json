@@ -1,0 +1,28 @@
+{
+    "productos": [
+      {
+        "nombre": "Producto 1",
+        "precio": 100,
+        "cantidad": 1,
+        "img": "https://st.depositphotos.com/1000128/5054/i/950/depositphotos_50545025-stock-photo-smart-tv.jpg"
+      },
+      {
+        "nombre": "camara",
+        "precio": 200,
+        "cantidad": 1,
+        "img": "https://i.pinimg.com/236x/13/f4/47/13f447b12d02019d1c5feeeb6165fe80.jpg"
+      },
+      {
+        "nombre": "computadora",
+        "precio": 300,
+        "cantidad": 1,
+        "img": "https://i.pinimg.com/236x/75/08/39/75083933cf918514c72225cea05c2062.jpg"
+      },
+      {
+        "nombre": "microondas",
+        "precio": 400,
+        "cantidad": 1,
+        "img": "https://i.pinimg.com/236x/eb/9b/ca/eb9bca67a51e6e5d30e24615fdc1c246.jpg"
+      }
+    ]
+  }
